@@ -1,0 +1,227 @@
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+color:white;
+scroll-behavior:smooth;
+}
+
+/* NAVBAR */
+header{
+display:flex;
+justify-content:space-between;
+padding:20px 60px;
+position:fixed;
+width:100%;
+background:rgba(0,0,0,0.5);
+z-index:1000;
+}
+
+nav a{
+margin:10px;
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#FFD166;
+}
+
+.logo{
+background:#FFD166;
+color:black;
+padding:10px;
+border-radius:50%;
+font-weight:bold;
+}
+
+/* HERO */
+.hero{
+display:flex;
+justify-content:space-around;
+align-items:center;
+height:100vh;
+padding-top:80px;
+}
+
+.hero img{
+width:260px;
+border-radius:50%;
+}
+
+/* BUTTON */
+.btn{
+background:#7F5AF0;
+padding:10px 20px;
+border-radius:25px;
+color:white;
+text-decoration:none;
+margin:5px;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+.outline{
+border:2px solid #FFD166;
+background:none;
+}
+
+.cv{
+background:#FFD166;
+color:black;
+}
+
+/* SECTION */
+.section{
+padding:100px 60px;
+text-align:center;
+animation:fadeIn 1.5s;
+}
+
+/* GRID */
+.grid{
+display:flex;
+justify-content:center;
+gap:50px;
+flex-wrap:wrap;
+}
+
+/* CARDS */
+.cards{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:20px;
+width:260px;
+border-radius:15px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* SKILLS */
+.bar{
+background:#333;
+height:10px;
+border-radius:10px;
+}
+
+.bar span{
+display:block;
+height:100%;
+background:#FFD166;
+border-radius:10px;
+}
+
+/* SOCIAL */
+.social-icons{
+display:flex;
+justify-content:center;
+gap:30px;
+}
+
+.social-icons a{
+width:65px;
+height:65px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:26px;
+color:white;
+transition:0.4s;
+animation:float 3s infinite;
+}
+
+.facebook{background:#1877F2;}
+.instagram{background:linear-gradient(45deg,#feda75,#d62976,#962fbf,#4f5bd5);}
+.linkedin{background:#0A66C2;}
+.whatsapp-icon{background:#25D366;}
+
+.social-icons a:hover{
+transform:translateY(-12px) scale(1.15);
+box-shadow:0 0 25px white;
+}
+
+.social-icons a::after{
+content:attr(data-name);
+position:absolute;
+bottom:-35px;
+background:black;
+padding:5px 10px;
+border-radius:10px;
+opacity:0;
+}
+
+.social-icons a:hover::after{
+opacity:1;
+}
+
+/* FORM */
+form{
+display:flex;
+flex-direction:column;
+max-width:400px;
+margin:auto;
+gap:10px;
+}
+
+input,textarea{
+padding:10px;
+border-radius:5px;
+border:none;
+}
+
+button{
+background:#7F5AF0;
+color:white;
+padding:10px;
+border:none;
+}
+
+/* WHATSAPP */
+.whatsapp-btn{
+background:#25D366;
+padding:10px;
+color:white;
+text-decoration:none;
+border-radius:20px;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.hero{
+flex-direction:column;
+text-align:center;
+}
+}
