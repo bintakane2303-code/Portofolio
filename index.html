@@ -158,7 +158,7 @@ J’accompagne les entreprises dans leur transformation digitale.
 
 <div class="social-icons">
 
-<a href="https://www.facebook.com/binta.kane.775" target="_blank" data-name="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.facebook.com/profile.php?id=61570718806961" target="_blank" data-name="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
 
 <a href="https://www.instagram.com/bdk2303_/" target="_blank" data-name="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
 
@@ -175,12 +175,22 @@ J’accompagne les entreprises dans leur transformation digitale.
 
 <h2>Contact</h2><br>
 
-<form>
-<input type="text" placeholder="Nom">
-<input type="email" placeholder="Email">
-<textarea placeholder="Message"></textarea>
-<button>Envoyer</button>
+<form id="contact-form">
+
+<label for="nom">Nom :</label>
+<input type="text" id="nom" name="nom" placeholder="Nom" required>
+
+<label for="email">Email :</label>
+<input type="email" id="email" name="email" placeholder="Email" required>
+
+<label for="message">Message :</label>
+<textarea id="message" name="message" rows="3" placeholder="Message" required></textarea>
+
+<button type="submit">Envoyer</button>
+
 </form>
+
+<p id="form-status"></p>
 
 <br>
 
@@ -194,5 +204,7 @@ J’accompagne les entreprises dans leur transformation digitale.
 <p>© 2026 Binta Kane</p>
 </footer>
 <script src="script.js"></script>
+<script type="module" src="formulaire-contact.js"></script>
+
 </body>
 </html>
