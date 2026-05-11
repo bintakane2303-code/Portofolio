@@ -1,48 +1,56 @@
-import { db } from "./firebase-config.js";
-import { collection, addDoc, serverTimestamp }
-from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// Récupération des éléments
+
+/* 🔥 CONFIG FIREBASE (OK pour ton projet) */
+const firebaseConfig = {
+  apiKey: "AIzaSyCEYTdYsfQtSuMJumEj2eBtxJ3Hs72zb_0",
+  authDomain: "portofolio-binta-kane.firebaseapp.com",
+  projectId: "portofolio-binta-kane",
+  storageBucket: "portofolio-binta-kane.appspot.com",
+  messagingSenderId: "1060902993577",
+  appId: "1:1060902993577:web:b6178b2ed341b4d52473b8"
+};
+
+/* 🔥 INITIALISATION FIREBASE */
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+console.log("🔥 Firebase connecté");
+
+/* 🔥 FORMULAIRE */
 const form = document.getElementById("contact-form");
-const status = document.getElementById("form-status");
 
-// Sécurité : vérifier que le formulaire existe
-if (form) {
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const nom = document.getElementById("nom").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        // Vérification
-        if (!nom || !email || !message) {
-            status.textContent = "⚠️ Remplis tous les champs";
-            status.style.color = "orange";
-            return;
-        }
-
-        status.textContent = "⏳ Envoi en cours...";
-        status.style.color = "gray";
-
-        try {
-            await addDoc(collection(db, "Messages"), {
-                nom: nom,
-                email: email,
-                message: message,
-                date: serverTimestamp()
-            });
-
-            status.textContent = "✅ Message envoyé avec succès !";
-            status.style.color = "green";
-
-            form.reset();
-
-        } catch (error) {
-            console.error("Erreur Firestore :", error);
-
-            status.textContent = "❌ Erreur lors de l'envoi";
-            status.style.color = "red";
-        }
-    });
+if (!form) {
+  console.error("❌ Formulaire introuvable");
 }
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  console.log("📩 Formulaire soumis");
+
+  const nom = document.getElementById("nom").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  try {
+    console.log("🚀 Envoi vers Firestore...");
+
+    const docRef = await addDoc(collection(db, "messages"), {
+      nom: nom,
+      email: email,
+      message: message,
+      date: new Date()
+    });
+
+    console.log("🔥 Message envoyé ID :", docRef.id);
+
+    alert("Message envoyé avec succès !");
+    form.reset();
+
+  } catch (error) {
+    console.error("❌ Erreur Firebase :", error);
+    alert("Erreur : " + error.message);
+  }
+});
